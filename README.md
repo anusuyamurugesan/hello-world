@@ -38,5 +38,5 @@ Topic|Branch name|
 |Build helm chart from piepline and push to jfrog helm repository|helm-jfrog|
 |Deploy to kubernetes using helm using ssh|deploy-k8s-helm-ssh|
 
-Tested polling for polling.
+Tested polling.
 Testing for webhook.
