@@ -13,7 +13,7 @@ pipeline {
     stage ('Build') {
       steps {
         sh 'mvn clean package'
-         sh 'cp -rf /var/lib/jenkins/workspace/11-deploy_to_tomcat.war /var/lib/tomcat9/webapps/'
+         sh 'cp -rf /var/lib/jenkins/workspace/11-deploy_to_tomcat/*.war /var/lib/tomcat9/webapps/'
       }
     }
     stage ('Deploy') {
