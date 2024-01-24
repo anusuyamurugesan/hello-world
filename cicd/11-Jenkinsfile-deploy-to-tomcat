@@ -1,11 +1,5 @@
 pipeline {
   agent any
-  options {
-    disableConcurrentBuilds()
-    disableResume()
-    buildDiscarder(logRotator(numToKeepStr: '10'))
-    timeout(time: 1, unit: 'HOURS')
-  }
   tools {
     maven 'maven-3.6.3' 
   }
@@ -13,13 +7,12 @@ pipeline {
     stage ('Build') {
       steps {
         sh 'mvn clean package'
-         sh 'cp -rf /var/lib/jenkins/workspace/11-deploy_to_tomcat/target/*.war /var/lib/tomcat9/webapps/'
       }
     }
     stage ('Deploy') {
       steps {
         script {
-          deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'http://localhost:8081')], contextPath: '/pipeline', onFailure: false, war: '/var/lib/tomcat9/webapps/hello-world-1.0-SNAPSHOT.war'       
+          deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'http://localhost:8081')], contextPath: '/pipeline', onFailure: false, war: '/var/lib/jenkins/workspace/11-deploy_to_tomcat/target/hello-world-1.0-SNAPSHOT.war'       
        }
       }
     }
