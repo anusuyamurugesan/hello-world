@@ -12,7 +12,7 @@ pipeline {
     stage ('Deploy') {
       steps {
         script {
-          deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'http://localhost:8081')], contextPath: '/pipeline', onFailure: false, war: '/var/lib/jenkins/workspace/11-deploy_to_tomcat/target/hello-world-1.0-SNAPSHOT.war'       
+          deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'http://localhost:8080')], contextPath: '/pipeline', onFailure: false, war: '/var/lib/jenkins/workspace/11-deploy_to_tomcat/target/hello-world-1.0-SNAPSHOT.war'       
        }
       }
     }
