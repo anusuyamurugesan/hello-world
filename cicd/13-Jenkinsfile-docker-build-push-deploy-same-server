@@ -10,13 +10,19 @@ pipeline {
   stages {
     stage ('Build') {
       steps {
+        sh 'pwd'
+        sh 'ls -lart'
         sh 'mvn clean package'
+        sh 'pwd'
+        sh 'ls -lart'
       }
     }
     stage('Docker Build') {
       steps {
         script {
           docker.build("anu/hello-world:${TAG}")
+        sh 'pwd'
+        sh 'ls -lart'
         }
       }
     }
