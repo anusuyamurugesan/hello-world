@@ -7,7 +7,7 @@
   <packaging>war</packaging>
   <name>hello-world</name>
   <url>http://maven.apache.org</url>
-   <version></version>
+   <version>1</version>
   <description>hello-world</description>
 
   <build>
