@@ -20,7 +20,7 @@ pipeline {
     stage('Docker Build') {
       steps {
         script {
-          docker.build("anu/hello-world:${TAG}")
+          docker.build("anusuyam/hello-world:${TAG}")
         sh 'pwd'
         sh 'ls -lart'
         }
@@ -30,8 +30,8 @@ pipeline {
       steps {
         script {
           docker.withRegistry('https://registry.hub.docker.com', 'anu_docker_credential') {
-            docker.image("anu/hello-world:${TAG}").push()
-            docker.image("anu/hello-world:${TAG}").push("latest")
+            docker.image("anusuyam/hello-world:${TAG}").push()
+            docker.image("anusuyam/hello-world:${TAG}").push("latest")
           }
         }
       }
@@ -40,7 +40,7 @@ pipeline {
       steps {
         sh "docker stop hello-world | true"
         sh "docker rm hello-world | true"
-        sh "docker run --name hello-world -d -p 9004:8080 anu/hello-world:${TAG}"
+        sh "docker run --name hello-world -d -p 9004:8080 anusuyam/hello-world:${TAG}"
       }
     }
   }
