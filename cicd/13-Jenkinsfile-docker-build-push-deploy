@@ -14,7 +14,7 @@ stages {
 
    stage('Docker Build') {
       steps {
-        sh "docker build -t Hello-world-Test"
+        sh "docker build -t hello-world-test"
       }
 }
 
